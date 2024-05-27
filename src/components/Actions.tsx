@@ -1,6 +1,6 @@
 export const Actions = () => {
     return(
-        <div className="flex justify-between text-sm">
+        <div className="flex justify-between text-sm px-4">
             <p>5 Itens Restante</p>
             <div className="flex gap-4">
                 <button>Todos</button>
