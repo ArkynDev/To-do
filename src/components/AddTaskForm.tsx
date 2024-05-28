@@ -1,29 +1,27 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask } from '../store/actions';
-import { v4 as uuidv4 } from 'uuid'; // Import UUID library
 
 export const AddTaskForm = () => {
-    const dispatch = useDispatch();
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const taskName = (event.target as HTMLFormElement).elements['taskName'].value;
-        dispatch(
-        addTask({ id: uuidv4(), name: taskName, done: false }) // Generate UUID
-        );
-    };
 
     return (
-        <form onSubmit={handleSubmit} className='flex w-full bg-slate-900 p-4 rounded-md'>
-            <input 
-                type="text" 
-                id="taskName" 
-                name="taskName" 
-                placeholder='Criar nova tarefa...' 
-                className=' w-full bg-transparent focus:outline-none' 
-            />
-            <button type="submit">Adicionar</button>
+        <form className='flex items-center w-full bg-slate-900 p-4 rounded-md'>
+            <div className="flex flex-col flex-auto gap-4">
+                <input
+                    type="text"
+                    id="taskName"
+                    name="taskName"
+                    required
+                    placeholder='Criar nova tarefa...'
+                    className=' w-full bg-transparent focus:outline-none'
+                />
+                <input 
+                    type="text" 
+                    id="category"
+                    name="category" 
+                    required
+                    placeholder="categoria..." 
+                    className=' w-full bg-transparent focus:outline-none' 
+                />
+            </div>
+            <button type="submit" className="flex items-center justify-center bg-slate-400 rounded-lg px-4 py-3">Adicionar</button>
         </form>
     );
 };
