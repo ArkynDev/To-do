@@ -1,24 +1,13 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from "react"
 
-import { Task } from './Task';
+import { Task } from "./Task"
 
-interface TaskListProps {
-    deleteTask: (taskId: string) => void;
-    }
-
-export const TasksList: React.FC<TaskListProps> = ({ deleteTask }) => {
-    const tasks = useSelector((state) => state.tasks); // Get tasks from Redux state
-
-    useEffect(() => {
-        
-    }, [tasks]);
-    
+export const TasksList = ({ tasks }) => {
     return (
-        <div className='flex flex-col flex-auto'>
+        <div className='flex flex-col flex-auto gap-2 p-2'>
             {tasks.map((task) => (
-                <Task key={task.id} {...task} deleteTask={deleteTask} />
+                <Task name={task.text} category={task.category} done={task.isCompleted} />
             ))}
         </div>
-    );
-};
+    )
+}
